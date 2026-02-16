@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /cos
+Disallow: /comanda
+
+Sitemap: https://magazindepompe.ro/sitemap.xml
