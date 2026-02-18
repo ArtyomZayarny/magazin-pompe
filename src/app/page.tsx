@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Shield, Truck, Wrench, Award, Phone } from "lucide-react";
+import { ArrowRight, Shield, Truck, Wrench, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +10,7 @@ import { categories } from "@/data/categories";
 import { brands } from "@/data/brands";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/product/ProductCard";
+import { HeroSlider } from "@/components/HeroSlider";
 
 export default function HomePage() {
   const featuredProducts = products.filter((p) => p.oldPrice).slice(0, 4);
@@ -17,38 +18,8 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero section */}
-      <section className="bg-gradient-to-br from-primary/5 via-background to-brand-green/5">
-        <div className="container mx-auto px-4 py-16 md:py-24">
-          <div className="max-w-3xl">
-            <Badge className="mb-4 bg-brand-green/10 text-brand-green border-brand-green/20">
-              Distribuitor autorizat din 1997
-            </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
-              Pompe și echipamente hidraulice{" "}
-              <span className="text-primary">Made in Italy</span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl">
-              Distribuitor oficial Pedrollo, SAER și Caprari în România.
-              Pompe submersibile, hidrofoare și accesorii cu garanție și suport tehnic profesional.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <Link href="/produse">
-                  Vezi Catalogul
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/contact">
-                  <Phone className="mr-2 h-4 w-4" />
-                  Solicită Consultanță
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Slider */}
+      <HeroSlider />
 
       {/* Italian quality strip */}
       <section className="border-y bg-muted/30">
@@ -91,12 +62,12 @@ export default function HomePage() {
             <Link key={cat.id} href={`/categorie/${cat.slug}`}>
               <Card className="group hover:shadow-md transition-all hover:border-primary/30 h-full">
                 <CardContent className="p-4 text-center">
-                  <div className="h-24 flex items-center justify-center mb-3 relative overflow-hidden rounded-md bg-muted/50">
+                  <div className="aspect-square flex items-center justify-center relative overflow-hidden rounded-md bg-muted/50 mb-3">
                     <Image
                       src={cat.image}
                       alt={cat.name}
                       fill
-                      className="object-contain p-2 group-hover:scale-110 transition-transform duration-300"
+                      className="object-contain p-3 group-hover:scale-110 transition-transform duration-300"
                       sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                     />
                   </div>
